@@ -18,7 +18,10 @@ func main() {
 	http.Handle("/metrics", promhttp.Handler())
 
 	if err := http.ListenAndServe(":8080", nil); err != http.ErrAbortHandler {
-		slog.Error("error: %s", err)
+		slog.Error(
+			"error",
+			"err", err,
+		)
 	}
 
 	fmt.Println("hello")
